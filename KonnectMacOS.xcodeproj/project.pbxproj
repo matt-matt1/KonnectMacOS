@@ -11,6 +11,15 @@
 		AA17305424CF91CA004454AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA17305324CF91CA004454AB /* ViewController.swift */; };
 		AA17305624CF91CD004454AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA17305524CF91CD004454AB /* Assets.xcassets */; };
 		AA17305924CF91CD004454AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA17305724CF91CD004454AB /* Main.storyboard */; };
+		AA39EB0124D072EF0000EA70 /* LeftCollViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EAFF24D072EF0000EA70 /* LeftCollViewItem.swift */; };
+		AA39EB0224D072EF0000EA70 /* LeftCollViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA39EB0024D072EF0000EA70 /* LeftCollViewItem.xib */; };
+		AA39EB0524D07F9A0000EA70 /* RightCollItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0324D07F9A0000EA70 /* RightCollItem.swift */; };
+		AA39EB0624D07F9A0000EA70 /* RightCollItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA39EB0424D07F9A0000EA70 /* RightCollItem.xib */; };
+		AA39EB0A24D0836F0000EA70 /* LeftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0924D0836F0000EA70 /* LeftItem.swift */; };
+		AA39EB0C24D0850A0000EA70 /* CollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0B24D0850A0000EA70 /* CollViewDelegate.swift */; };
+		AA39EB0E24D0854B0000EA70 /* CollViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0D24D0854B0000EA70 /* CollViewDatasource.swift */; };
+		AA39EB1024D091D20000EA70 /* RightItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0F24D091D20000EA70 /* RightItem.swift */; };
+		AA39EB1224D0928A0000EA70 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB1124D0928A0000EA70 /* Items.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +30,15 @@
 		AA17305824CF91CD004454AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA17305A24CF91CD004454AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA17305B24CF91CD004454AB /* KonnectMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KonnectMacOS.entitlements; sourceTree = "<group>"; };
+		AA39EAFF24D072EF0000EA70 /* LeftCollViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollViewItem.swift; sourceTree = "<group>"; };
+		AA39EB0024D072EF0000EA70 /* LeftCollViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftCollViewItem.xib; sourceTree = "<group>"; };
+		AA39EB0324D07F9A0000EA70 /* RightCollItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightCollItem.swift; sourceTree = "<group>"; };
+		AA39EB0424D07F9A0000EA70 /* RightCollItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightCollItem.xib; sourceTree = "<group>"; };
+		AA39EB0924D0836F0000EA70 /* LeftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftItem.swift; sourceTree = "<group>"; };
+		AA39EB0B24D0850A0000EA70 /* CollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollViewDelegate.swift; sourceTree = "<group>"; };
+		AA39EB0D24D0854B0000EA70 /* CollViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollViewDatasource.swift; sourceTree = "<group>"; };
+		AA39EB0F24D091D20000EA70 /* RightItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightItem.swift; sourceTree = "<group>"; };
+		AA39EB1124D0928A0000EA70 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +55,7 @@
 		AA17304524CF91CA004454AB = {
 			isa = PBXGroup;
 			children = (
+				AA39EB0824D083430000EA70 /* Model */,
 				AA17305024CF91CA004454AB /* KonnectMacOS */,
 				AA17304F24CF91CA004454AB /* Products */,
 			);
@@ -55,12 +74,28 @@
 			children = (
 				AA17305124CF91CA004454AB /* AppDelegate.swift */,
 				AA17305324CF91CA004454AB /* ViewController.swift */,
+				AA39EB0B24D0850A0000EA70 /* CollViewDelegate.swift */,
+				AA39EB0D24D0854B0000EA70 /* CollViewDatasource.swift */,
+				AA39EAFF24D072EF0000EA70 /* LeftCollViewItem.swift */,
+				AA39EB0024D072EF0000EA70 /* LeftCollViewItem.xib */,
+				AA39EB0324D07F9A0000EA70 /* RightCollItem.swift */,
+				AA39EB0424D07F9A0000EA70 /* RightCollItem.xib */,
 				AA17305524CF91CD004454AB /* Assets.xcassets */,
 				AA17305724CF91CD004454AB /* Main.storyboard */,
 				AA17305A24CF91CD004454AB /* Info.plist */,
 				AA17305B24CF91CD004454AB /* KonnectMacOS.entitlements */,
 			);
 			path = KonnectMacOS;
+			sourceTree = "<group>";
+		};
+		AA39EB0824D083430000EA70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA39EB0924D0836F0000EA70 /* LeftItem.swift */,
+				AA39EB0F24D091D20000EA70 /* RightItem.swift */,
+				AA39EB1124D0928A0000EA70 /* Items.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +130,11 @@
 				TargetAttributes = {
 					AA17304D24CF91CA004454AB = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -122,7 +162,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA17305624CF91CD004454AB /* Assets.xcassets in Resources */,
+				AA39EB0624D07F9A0000EA70 /* RightCollItem.xib in Resources */,
 				AA17305924CF91CD004454AB /* Main.storyboard in Resources */,
+				AA39EB0224D072EF0000EA70 /* LeftCollViewItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +176,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA17305424CF91CA004454AB /* ViewController.swift in Sources */,
+				AA39EB0A24D0836F0000EA70 /* LeftItem.swift in Sources */,
+				AA39EB0524D07F9A0000EA70 /* RightCollItem.swift in Sources */,
+				AA39EB0E24D0854B0000EA70 /* CollViewDatasource.swift in Sources */,
+				AA39EB1224D0928A0000EA70 /* Items.swift in Sources */,
+				AA39EB0124D072EF0000EA70 /* LeftCollViewItem.swift in Sources */,
 				AA17305224CF91CA004454AB /* AppDelegate.swift in Sources */,
+				AA39EB0C24D0850A0000EA70 /* CollViewDelegate.swift in Sources */,
+				AA39EB1024D091D20000EA70 /* RightItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
