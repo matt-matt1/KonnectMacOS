@@ -10,6 +10,20 @@ import Cocoa
 
 
 class LeftItem {
+	let section: String
+	let items: [LeftSubItem]
+	
+	
+	init(section: String, items: [LeftSubItem]) {
+		self.section = section
+		self.items = items
+	}
+
+
+}
+
+
+class LeftSubItem {
 
 	let title: String
 	let left: String

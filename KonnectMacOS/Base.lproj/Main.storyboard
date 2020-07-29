@@ -691,11 +691,11 @@
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="xZ8-69-fuW"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="95K-q2-mP4" kind="relationship" relationship="window.shadowedContentViewController" id="rBA-i6-rfp"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -703,201 +703,17 @@
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <scene sceneID="Uea-fI-FTB">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="KonnectMacOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfJ-X9-SrH">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                <subviews>
-                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="gyI-25-pdt" userLabel="Header Container">
-                                        <rect key="frame" x="0.0" y="550" width="800" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="2RX-9H-SBn"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="QPJ-bV-48s" kind="embed" id="pBW-LT-gdG"/>
-                                        </connections>
-                                    </containerView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Khn-2n-NHf">
-                                        <rect key="frame" x="0.0" y="50" width="800" height="500"/>
-                                        <subviews>
-                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZa-ys-oD8">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
-                                                <clipView key="contentView" drawsBackground="NO" id="HvV-HG-RtP">
-                                                    <rect key="frame" x="1" y="1" width="198" height="498"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <collectionView id="G5L-wS-893">
-                                                            <rect key="frame" x="0.0" y="0.0" width="198" height="158"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Nn7-73-Cpa">
-                                                                <size key="itemSize" width="50" height="50"/>
-                                                            </collectionViewFlowLayout>
-                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </collectionView>
-                                                    </subviews>
-                                                </clipView>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="910-SG-voY"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="IJD-YL-Z35"/>
-                                                    <constraint firstAttribute="width" constant="200" id="h47-9J-WFx"/>
-                                                </constraints>
-                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Pm5-Fa-7NV">
-                                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Zjx-hq-Of1">
-                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
-                                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-z1-vEt">
-                                                <rect key="frame" x="206" y="10" width="5" height="480"/>
-                                            </box>
-                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft0-pp-52t">
-                                                <rect key="frame" x="217" y="0.0" width="583" height="500"/>
-                                                <clipView key="contentView" drawsBackground="NO" id="byb-WZ-yMS">
-                                                    <rect key="frame" x="1" y="1" width="581" height="498"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <collectionView id="bqr-HZ-M80">
-                                                            <rect key="frame" x="0.0" y="0.0" width="581" height="158"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Iqz-BB-zbw">
-                                                                <size key="itemSize" width="50" height="50"/>
-                                                            </collectionViewFlowLayout>
-                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </collectionView>
-                                                    </subviews>
-                                                </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="MMd-1W-bHM">
-                                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vQ1-09-qEM">
-                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="yZa-ys-oD8" firstAttribute="leading" secondItem="Khn-2n-NHf" secondAttribute="leading" id="9Bf-I1-Dr2"/>
-                                            <constraint firstAttribute="bottom" secondItem="yZa-ys-oD8" secondAttribute="bottom" id="9sA-mm-aHC"/>
-                                            <constraint firstAttribute="width" constant="800" id="Bqu-o1-1ov"/>
-                                            <constraint firstItem="rLY-z1-vEt" firstAttribute="top" secondItem="Khn-2n-NHf" secondAttribute="top" constant="10" id="HPU-8F-1cn"/>
-                                            <constraint firstAttribute="bottom" secondItem="rLY-z1-vEt" secondAttribute="bottom" constant="10" id="N2L-ZN-bdb"/>
-                                            <constraint firstAttribute="trailing" secondItem="ft0-pp-52t" secondAttribute="trailing" id="VAx-4i-kbz"/>
-                                            <constraint firstAttribute="bottom" secondItem="ft0-pp-52t" secondAttribute="bottom" id="fCN-M7-JrO"/>
-                                            <constraint firstItem="yZa-ys-oD8" firstAttribute="top" secondItem="Khn-2n-NHf" secondAttribute="top" id="n2c-hs-1PU"/>
-                                            <constraint firstItem="ft0-pp-52t" firstAttribute="top" secondItem="Khn-2n-NHf" secondAttribute="top" id="zkL-W5-rSb"/>
-                                        </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="kqk-DC-1rq" userLabel="Footer Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Vxo-eT-tdx"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="yP2-QR-24G" kind="embed" id="zR7-mo-hap"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Khn-2n-NHf" secondAttribute="trailing" id="85g-nm-F4r"/>
-                                    <constraint firstAttribute="trailing" secondItem="gyI-25-pdt" secondAttribute="trailing" id="LYg-N1-Gof"/>
-                                    <constraint firstAttribute="bottom" secondItem="kqk-DC-1rq" secondAttribute="bottom" id="MOO-dB-tAD"/>
-                                    <constraint firstItem="gyI-25-pdt" firstAttribute="top" secondItem="DfJ-X9-SrH" secondAttribute="top" id="Ufl-z5-90X"/>
-                                    <constraint firstItem="Khn-2n-NHf" firstAttribute="leading" secondItem="DfJ-X9-SrH" secondAttribute="leading" id="iDP-je-SYN"/>
-                                    <constraint firstItem="kqk-DC-1rq" firstAttribute="leading" secondItem="DfJ-X9-SrH" secondAttribute="leading" id="lJk-cO-H05"/>
-                                    <constraint firstItem="gyI-25-pdt" firstAttribute="leading" secondItem="DfJ-X9-SrH" secondAttribute="leading" id="vKE-xp-zwm"/>
-                                    <constraint firstAttribute="trailing" secondItem="kqk-DC-1rq" secondAttribute="trailing" id="wqf-RH-YWY"/>
-                                </constraints>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="DfJ-X9-SrH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="593-ss-PGC"/>
-                            <constraint firstItem="DfJ-X9-SrH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="YzC-Cs-vTX"/>
-                            <constraint firstAttribute="bottom" secondItem="DfJ-X9-SrH" secondAttribute="bottom" id="dAF-Ij-4g0"/>
-                            <constraint firstAttribute="bottom" secondItem="DfJ-X9-SrH" secondAttribute="bottom" id="gVC-SR-Ejq"/>
-                            <constraint firstAttribute="trailing" secondItem="DfJ-X9-SrH" secondAttribute="trailing" id="hKu-39-HBm"/>
-                            <constraint firstItem="DfJ-X9-SrH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ppv-JS-wi7"/>
-                            <constraint firstAttribute="trailing" secondItem="DfJ-X9-SrH" secondAttribute="trailing" id="x57-gY-3TD"/>
-                            <constraint firstItem="DfJ-X9-SrH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="xxU-TL-pzr"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="collDiv" destination="rLY-z1-vEt" id="mAQ-1O-5Re"/>
-                        <outlet property="collLeft" destination="yZa-ys-oD8" id="l6p-gK-w3w"/>
-                        <outlet property="collLeftClip" destination="HvV-HG-RtP" id="vgg-TW-0FB"/>
-                        <outlet property="collLeftMaxWidth" destination="910-SG-voY" id="17O-By-bPF"/>
-                        <outlet property="collLeftMinWidth" destination="IJD-YL-Z35" id="3SJ-SO-p9w"/>
-                        <outlet property="collLeftWidth" destination="h47-9J-WFx" id="2IG-Ap-wwO"/>
-                        <outlet property="collRight" destination="ft0-pp-52t" id="fHi-Oe-F4W"/>
-                        <outlet property="collRightClip" destination="byb-WZ-yMS" id="Hvv-rM-1hW"/>
-                        <outlet property="collViewLeft" destination="G5L-wS-893" id="fc0-fn-jTw"/>
-                        <outlet property="collViewLeftLayout" destination="Nn7-73-Cpa" id="wf9-KN-XyM"/>
-                        <outlet property="collViewRight" destination="bqr-HZ-M80" id="I2P-9q-6lr"/>
-                        <outlet property="collViewRightLayout" destination="Iqz-BB-zbw" id="Mz1-vV-hrp"/>
-                        <outlet property="contFooter" destination="kqk-DC-1rq" id="nqb-f4-wtR"/>
-                        <outlet property="contFooterHeight" destination="Vxo-eT-tdx" id="LVz-hU-mCZ"/>
-                        <outlet property="contHeader" destination="gyI-25-pdt" id="d0g-ZH-1sc"/>
-                        <outlet property="contHeaderHeight" destination="2RX-9H-SBn" id="3sC-uP-Pbr"/>
-                        <outlet property="stackMiddle" destination="Khn-2n-NHf" id="wAN-yD-wHj"/>
-                    </connections>
-                </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="929"/>
-        </scene>
-        <!--Header Container-->
-        <scene sceneID="wMr-Lc-wQJ">
-            <objects>
-                <viewController title="Header Container" id="yP2-QR-24G" sceneMemberID="viewController">
-                    <view key="view" id="7Gp-KY-j0C">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                <viewController id="95K-q2-mP4" customClass="ViewController" customModule="KonnectMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kUj-WR-TKX">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="mbP-hI-Hxp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="xLP-Il-65y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="517"/>
-        </scene>
-        <!--Footer Container-->
-        <scene sceneID="aVH-h4-cub">
-            <objects>
-                <viewController title="Footer Container" id="QPJ-bV-48s" sceneMemberID="viewController">
-                    <view key="view" id="226-40-Cfl">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="Q3Y-2e-Ksp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="1415"/>
+            <point key="canvasLocation" x="68" y="616"/>
         </scene>
     </scenes>
 </document>

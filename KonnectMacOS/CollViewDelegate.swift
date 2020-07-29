@@ -14,22 +14,22 @@ extension ViewController: NSCollectionViewDelegate {
 	func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
 		guard let indexPath = indexPaths.first else { return }
 		if collectionView == collViewLeft {
-			let item = LeftList[indexPath.item]
+			let item = LeftList[indexPath.section].items[indexPath.item]
 			print("selected left \(item.title)")
 		} else {
-			let item = MainList[indexPath.item]
-			print("selected right \(item)")
+			let item = MainList[indexPath.section].items[indexPath.item]
+			print("selected right \(item.title)")
 		}
 	}
 	
 	func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
 		guard let indexPath = indexPaths.first else { return }
 		if collectionView == collViewLeft {
-			let item = LeftList[indexPath.item]
+			let item = LeftList[indexPath.section].items[indexPath.item]
 			print("deselected left \(item.title)")
 		} else {
-			let item = MainList[indexPath.item]
-			print("deselected right \(item)")
+			let item = MainList[indexPath.section].items[indexPath.item]
+			print("deselected right \(item.title)")
 		}
 	}
 	

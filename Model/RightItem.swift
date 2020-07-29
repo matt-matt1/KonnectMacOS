@@ -6,19 +6,31 @@
 //  Copyright © 2020 Yuma Technical Inc. All rights reserved.
 //
 
-
 import Cocoa
 
 
 class RightItem {
+	let section: String
+	let items: [RightSubItem]
+
 	
-	let image: NSImage
+	init(section: String, items: [RightSubItem]) {
+		self.section = section
+		self.items = items
+	}
+
+
+}
+
+
+class RightSubItem {
+	let image: NSImage?
 	let title: String
 	let left: String
 	let right: String
 	
 	
-	init(image: NSImage, title: String, left: String="", right: String="") {
+	init(image: NSImage?, title: String, left: String="", right: String="") {
 		self.image = image
 		self.title = title
 		self.left = left

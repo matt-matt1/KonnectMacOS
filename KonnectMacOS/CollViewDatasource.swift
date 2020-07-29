@@ -12,28 +12,38 @@ import Cocoa
 extension ViewController: NSCollectionViewDataSource {
 	
 	func numberOfSections(in collectionView: NSCollectionView) -> Int {
-		return 1//collectionView == collViewLeft ? 1 : MainList.count
+		let wh = collectionView == collViewLeft ? "left" : "right"
+		let num = collectionView == collViewLeft ? LeftList.count : MainList.count
+		print("\(wh) sections: \(num)")
+		return num
 	}
 	
 	func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-		return LeftList.count//collectionView == collViewLeft ? LeftList.count : MainList[section]
+		let wh = collectionView == collViewLeft ? "left" : "right"
+		let num = collectionView == collViewLeft ? LeftList[section].items.count : MainList[section].items.count
+		print("\(wh) section: \(section) has \(num) itews")
+		return num
 	}
 	
 	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+		let wh = collectionView == collViewLeft ? "left" : "right"
 		if collectionView == collViewLeft {
-			let item = LeftList[indexPath.item]
-			let cellView = collViewLeft.makeItem(withIdentifier: collViewLeftID, for: indexPath) as! LeftCollViewItem
-			cellView.textMiddle.stringValue = item.title
-			cellView.textLeft.stringValue = item.left
-			cellView.textRight.stringValue = item.right
-			return cellView
-		} /*else {
-			let item = MainList[indexPath.item]
-			let cellView = collViewRight.makeItem(withIdentifier: collViewRightID, for: indexPath) as! RightCollItem
-			cellView.textLabel.stringValue = item.description
-			return cellView
-		}*/
-		return NSCollectionViewItem()
+			let item = LeftList[indexPath.section].items[indexPath.item]
+			let cell = collViewLeft.makeItem(withIdentifier: /*collViewLeftID*/LeftCollViewItem.id, for: indexPath) as! LeftCollViewItem
+			print("\(wh) item: \(indexPath): \(item.title)")
+			cell.textMiddle.stringValue = item.title
+			cell.textLeft.stringValue = item.left
+			cell.textRight.stringValue = item.right
+			return cell
+		} else {
+			let item = MainList[indexPath.section].items[indexPath.item]
+			let cell = collViewRight.makeItem(withIdentifier: /*collViewRightID*/RightCollItem.id, for: indexPath) as! RightCollItem
+			print("\(wh) item: \(indexPath): \(item.title)")
+			cell.textLabel.stringValue = item.title
+			cell.imageMain.image = item.image
+			return cell
+		}
+//		return NSCollectionViewItem()
 	}
 	
 	

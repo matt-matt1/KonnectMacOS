@@ -9,29 +9,17 @@
 import Cocoa
 
 class ViewController: NSViewController {
-/*
-	@IBOutlet weak var contHeader: NSView!
-	@IBOutlet weak var contHeaderHeight: NSLayoutConstraint!
-	@IBOutlet weak var stackMiddle: NSStackView!
-	@IBOutlet weak var collLeft: NSScrollView!
-	@IBOutlet weak var collLeftClip: NSClipView!
-	@IBOutlet weak var collViewLeft: NSCollectionView!
-	@IBOutlet weak var collViewLeftLayout: NSCollectionViewFlowLayout!
-	@IBOutlet weak var collLeftMaxWidth: NSLayoutConstraint!
-	@IBOutlet weak var collLeftMinWidth: NSLayoutConstraint!
-	@IBOutlet weak var collLeftWidth: NSLayoutConstraint!
-	@IBOutlet weak var collDiv: NSBox!
-	@IBOutlet weak var collRight: NSScrollView!
-	@IBOutlet weak var collRightClip: NSClipView!
-	@IBOutlet weak var collViewRight: NSCollectionView!
-	@IBOutlet weak var collViewRightLayout: NSCollectionViewFlowLayout!
-	@IBOutlet weak var contFooter: NSView!
-	@IBOutlet weak var contFooterHeight: NSLayoutConstraint!
-	*/
-	let collViewLeftID = NSUserInterfaceItemIdentifier(rawValue: "collViewLeftID")
-	let collViewRightID = NSUserInterfaceItemIdentifier(rawValue: "collViewRightID")
-	var LeftList: [LeftItem] = [LeftItem(title: "Abcde"), LeftItem(title: "lolipop"), LeftItem(title: "This")]//[]
-	var MainList: [Int] = []
+
+	var LeftList: [LeftItem] = [LeftItem(section: "device", items: [LeftSubItem(title: "Abcde"),
+																	LeftSubItem(title: "lolipop"),
+																	LeftSubItem(title: "This")]),
+								LeftItem(section: "remote", items: [LeftSubItem(title: "FTP"),
+																	LeftSubItem(title: "my network")])]
+	
+	var MainList: [RightItem] = [RightItem(section: "all", items: [RightSubItem(image: nil, title: "first"),
+																   RightSubItem(image: nil, title: "second"),
+																   RightSubItem(image: nil, title: "third"),
+																   RightSubItem(image: nil, title: "fourth")])]
 	let flowLayout: NSCollectionViewFlowLayout = {
 		let view = NSCollectionViewFlowLayout()
 		view.minimumLineSpacing = 4
@@ -48,6 +36,8 @@ class ViewController: NSViewController {
 		view.allowsEmptySelection = true
 		view.allowsMultipleSelection = false
 		view.enclosingScrollView?.borderType = NSBorderType.noBorder
+		view.backgroundColors = [NSColor.clear]
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	let collViewRight: NSCollectionView = {
@@ -56,6 +46,7 @@ class ViewController: NSViewController {
 		view.allowsEmptySelection = true
 		view.allowsMultipleSelection = true
 		view.enclosingScrollView?.borderType = NSBorderType.noBorder
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	let gridLayout: NSCollectionViewGridLayout = {
@@ -73,13 +64,19 @@ class ViewController: NSViewController {
 		view.alignment = NSLayoutConstraint.Attribute.leading
 		view.distribution = NSStackView.Distribution.fill
 		view.orientation = NSUserInterfaceLayoutOrientation.vertical
-		view.spacing = 8
+		view.spacing = 0
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	let header: NSView = {
 		let view = NSView()
 		view.wantsLayer = true
-		view.layer?.backgroundColor = NSColor.red.cgColor
+//		view.layer?.backgroundColor = NSColor.red.cgColor
+		let gradient = CAGradientLayer()
+		gradient.colors = [NSColor.darkGray.cgColor, NSColor.lightGray.cgColor]
+		gradient.locations = [0.0, 1.0]
+		view.layer = gradient
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	var headerHeightConstraint: NSLayoutConstraint = {
@@ -90,7 +87,12 @@ class ViewController: NSViewController {
 	let footer: NSView = {
 		let view = NSView()
 		view.wantsLayer = true
-		view.layer?.backgroundColor = NSColor.green.cgColor
+//		view.layer?.backgroundColor = NSColor.green.cgColor
+		let gradient = CAGradientLayer()
+		gradient.colors = [NSColor.lightGray.cgColor, NSColor.darkGray.cgColor]
+		gradient.locations = [0.0, 1.0]
+		view.layer = gradient
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	var footerHeightConstraint: NSLayoutConstraint = {
@@ -104,16 +106,49 @@ class ViewController: NSViewController {
 		view.distribution = NSStackView.Distribution.fill
 		view.orientation = NSUserInterfaceLayoutOrientation.horizontal
 		view.spacing = 8
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	let mainContent: NSView = {
 		let view = NSView()
 		view.wantsLayer = true
-		view.layer?.backgroundColor = NSColor.blue.cgColor
+//		view.layer?.backgroundColor = NSColor.blue.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	let divVert: NSBox = {
 		let view = NSBox()
+		view.titlePosition = NSBox.TitlePosition.noTitle
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let scrollLeft: NSScrollView = {
+		let view = NSScrollView()
+		view.wantsLayer = true
+		view.layer?.backgroundColor = NSColor.red.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let scrollRight: NSScrollView = {
+		let view = NSScrollView()
+		view.wantsLayer = true
+		view.layer?.backgroundColor = NSColor.green.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let clipLeft: NSClipView = {
+		let view = NSClipView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let clipRight: NSClipView = {
+		let view = NSClipView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	var widthLeftConstraint: NSLayoutConstraint = {
+		let view = NSLayoutConstraint()
+		view.constant = 50
 		return view
 	}()
 
@@ -121,12 +156,30 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-//		configCollView()
-		drawSubs()
-//		addScroll(collectionView: collViewLeft)
-//		collViewLeft.delegate = self
-//		collViewLeft.dataSource = self
-//		drawCollectionView(collectionView: collViewLeft, layout: flowLayout, item: LeftCollViewItem.self, id: collViewLeftID)
+		self.view.wantsLayer = true
+		headerHeightConstraint.constant = 30
+		footerHeightConstraint.constant = 30
+		widthLeftConstraint.constant = 300
+		drawRows()
+		drawMainContent()
+		configCollViews()
+		configureFlowLayout(collectionView: collViewLeft)
+		configureFlowLayout(collectionView: collViewRight)
+
+//		headerHeightConstraint.animator().constant = 20
+//		widthLeftConstraint.constant = 500
+/*		NSAnimationContext.runAnimationGroup({ (context) in
+//			context.allowsImplicitAnimation = true
+			context.duration = 3
+//			headerHeightConstraint.animator().constant = 20
+			widthLeftConstraint.animator().constant = 500
+//			self.view.layoutSubtreeIfNeeded()
+			self.view.updateConstraintsForSubtreeIfNeeded()
+		}) {
+//			self.headerHeightConstraint.animator().constant = 50
+		}*/
+//		widthLeftConstraint.constant = 300
+//		stackHorz.layoutSubtreeIfNeeded()
 	}
 
 	override var representedObject: Any? {
@@ -134,47 +187,41 @@ class ViewController: NSViewController {
 		// Update the view, if already loaded.
 		}
 	}
-	/*
-	func configCollView() {
+	
+	
+	func configCollViews() {
 		collViewLeft.delegate = self
 		collViewLeft.dataSource = self
-		collViewLeft.isSelectable = true
-		collViewLeft.allowsEmptySelection = true
-		collViewLeft.allowsMultipleSelection = false
 		collViewLeft.enclosingScrollView?.borderType = NSBorderType.noBorder
-//		let LeftCollItem = NSNib(nibNamed: "LeftCollItem", bundle: nil)
-//		let LeftCollItem = NSNib(nibData: LeftCollViewItem.self, bundle: nil)
-		collViewLeft.register(LeftCollViewItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier("collViewLeftID"))
+		collViewLeft.register(LeftCollViewItem.self, forItemWithIdentifier: LeftCollViewItem.id)
 		
 		collViewRight.delegate = self
 		collViewRight.dataSource = self
-		collViewRight.isSelectable = true
-		collViewRight.allowsEmptySelection = true
-		collViewRight.allowsMultipleSelection = true
 		collViewRight.enclosingScrollView?.borderType = NSBorderType.noBorder
-//		let RightCollItem = NSNib(nibNamed: "RightCollItem", bundle: nil)
-		collViewRight.register(RightCollItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier("collViewRightID"))
+		collViewRight.register(RightCollItem.self, forItemWithIdentifier: RightCollItem.id)
 		
-		configureFlowLayout()
+//		configureFlowLayout()
 		//configureGridLayout()
 	}
 	
-	func configureFlowLayout() {
+	
+	func configureFlowLayout(collectionView: NSCollectionView) {
 		let flowLayout = NSCollectionViewFlowLayout()
 		//collViewLeftLayout.minimumInteritemSpacing = 30.0
 		flowLayout.minimumLineSpacing = 0
 		flowLayout.sectionInset = NSEdgeInsets(top: 2.0, left: 5.0, bottom: 1.0, right: 5.0)
-		flowLayout.itemSize = NSSize(width: collViewLeft.intrinsicContentSize.width, height: 50.0)
-		collViewLeft.collectionViewLayout = flowLayout
-		
+		flowLayout.itemSize = NSSize(width: collectionView.intrinsicContentSize.width, height: 50.0)
+		collectionView.collectionViewLayout = flowLayout
+		/*
 		flowLayout.minimumInteritemSpacing = 30.0
 		flowLayout.minimumLineSpacing = 30.0
 		flowLayout.sectionInset = NSEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 		//collViewRightLayout.itemSize = NSSize(width: 150.0, height: 150.0)
-		collViewRight.collectionViewLayout = flowLayout
+		collViewRight.collectionViewLayout = flowLayout*/
 	}
+
 	
-	func configureGridLayout() {
+	func configureGridLayout(collectionView: NSCollectionView) {
 		let gridLayout = NSCollectionViewGridLayout()
 		gridLayout.minimumInteritemSpacing = 30.0
 		gridLayout.minimumLineSpacing = 30.0
@@ -183,18 +230,14 @@ class ViewController: NSViewController {
 		gridLayout.minimumItemSize = NSSize(width: 150.0, height: 150.0)
 		gridLayout.maximumItemSize = NSSize(width: 150.0, height: 150.0)
 		//collViewLeftLayout = gridLayout
-		collViewLeft.collectionViewLayout = gridLayout
+		collectionView.collectionViewLayout = gridLayout
 	}
-*/
-	func drawSubs() {
-		self.view.wantsLayer = true
+
+	
+	func drawRows() {
 		self.view.addSubview(stackVert)
 		stackVert.addArrangedSubview(header)
 		stackVert.addArrangedSubview(mainContent)
-//		mainContent.addSubview(stackHorz)
-//		stackHorz.addArrangedSubview(collViewLeft)
-//		stackHorz.addArrangedSubview(divVert)
-//		stackHorz.addArrangedSubview(collViewRight)
 		stackVert.addArrangedSubview(footer)
 		NSLayoutConstraint.activate([
 			stackVert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10),
@@ -217,21 +260,58 @@ class ViewController: NSViewController {
 			])
 	}
 	
-//	func addScroll(collectionView: NSCollectionView) {
-//		let scrollView = NSScrollView()
-//		scrollView.documentView = collectionView
-//		view.addSubview(scrollView)
-//	}
 	
-//	func drawCollectionView(collectionView: NSCollectionView, layout: NSCollectionViewLayout, item: AnyClass?, id: NSUserInterfaceItemIdentifier) {
-//		collectionView.dataSource = self
-//		collectionView.delegate = self
-//		collectionView.collectionViewLayout = layout
-//		collectionView.allowsMultipleSelection = false
-//		collectionView.backgroundColors = [.clear]
-//		collectionView.isSelectable = true
-//		collectionView.register(item, forItemWithIdentifier: id)
-//	}
+	func drawMainContent() {
+		mainContent.addSubview(stackHorz)
+		stackHorz.addArrangedSubview(scrollLeft)
+		scrollLeft.addSubview(clipLeft)
+		clipLeft.addSubview(collViewLeft)
+		stackHorz.addArrangedSubview(divVert)
+		stackHorz.addArrangedSubview(scrollRight)
+		scrollRight.addSubview(clipRight)
+		clipRight.addSubview(collViewRight)
+		NSLayoutConstraint.activate([
+			stackHorz.topAnchor.constraint(equalTo: mainContent.topAnchor, constant: 0),
+			stackHorz.leadingAnchor.constraint(equalTo: mainContent.leadingAnchor, constant: 0),
+			stackHorz.bottomAnchor.constraint(equalTo: mainContent.bottomAnchor, constant: 0),
+			stackHorz.trailingAnchor.constraint(equalTo: mainContent.trailingAnchor, constant: 0),
+
+			scrollLeft.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
+			scrollLeft.leadingAnchor.constraint(equalTo: stackHorz.leadingAnchor, constant: 0),
+			scrollLeft.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
+//			scrollLeft.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
+//			scrollLeft.widthAnchor.constraint(lessThanOrEqualToConstant: 500),
+			scrollLeft.widthAnchor.constraint(equalToConstant: widthLeftConstraint.constant),
+
+			clipLeft.topAnchor.constraint(equalTo: scrollLeft.topAnchor, constant: 0),
+			clipLeft.leadingAnchor.constraint(equalTo: scrollLeft.leadingAnchor, constant: 0),
+			clipLeft.bottomAnchor.constraint(equalTo: scrollLeft.bottomAnchor, constant: 0),
+			clipLeft.trailingAnchor.constraint(equalTo: scrollLeft.trailingAnchor, constant: 0),
+			
+			collViewLeft.topAnchor.constraint(equalTo: clipLeft.topAnchor, constant: 0),
+			collViewLeft.leadingAnchor.constraint(equalTo: clipLeft.leadingAnchor, constant: 0),
+			collViewLeft.bottomAnchor.constraint(equalTo: clipLeft.bottomAnchor, constant: 0),
+			collViewLeft.trailingAnchor.constraint(equalTo: clipLeft.trailingAnchor, constant: 0),
+
+			divVert.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 10),
+			divVert.widthAnchor.constraint(equalToConstant: 1),
+			divVert.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: -10),
+
+			scrollRight.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
+			scrollRight.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
+			scrollRight.trailingAnchor.constraint(equalTo: stackHorz.trailingAnchor, constant: 0),
+
+			clipRight.topAnchor.constraint(equalTo: scrollRight.topAnchor, constant: 0),
+			clipRight.leadingAnchor.constraint(equalTo: scrollRight.leadingAnchor, constant: 0),
+			clipRight.bottomAnchor.constraint(equalTo: scrollRight.bottomAnchor, constant: 0),
+			clipRight.trailingAnchor.constraint(equalTo: scrollRight.trailingAnchor, constant: 0),
+			
+			collViewRight.topAnchor.constraint(equalTo: clipRight.topAnchor, constant: 0),
+			collViewRight.leadingAnchor.constraint(equalTo: clipRight.leadingAnchor, constant: 0),
+			collViewRight.bottomAnchor.constraint(equalTo: clipRight.bottomAnchor, constant: 0),
+			collViewRight.trailingAnchor.constraint(equalTo: clipRight.trailingAnchor, constant: 0),
+			])
+	}
 
 
 }
