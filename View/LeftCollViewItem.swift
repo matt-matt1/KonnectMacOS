@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LeftCollViewItem: NSCollectionViewItem {
+final class LeftCollViewItem: NSCollectionViewItem {
 
 	let stackVert: NSStackView = {
 		let view = NSStackView()
@@ -166,20 +166,21 @@ class LeftCollViewItem: NSCollectionViewItem {
 	}
 
 	
-	override func loadView() {
+	override func loadView() {	// in place of nib
 //		super.loadView()
 		self.view = NSView()
+		self.view.wantsLayer = true
 	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-		view.wantsLayer = true
+		self.view.addSubview(stackVert)
 		drawInner()
     }
 	
 	func drawInner() {
-		self.view.addSubview(stackVert)
+//		self.view.addSubview(stackVert)
 		stackVert.addSubview(stackHorz)
 		stackVert.addSubview(horzLine)
 		stackHorz.addArrangedSubview(textLeft)

@@ -12,9 +12,9 @@ import Cocoa
 extension ViewController: NSCollectionViewDataSource {
 	
 	func numberOfSections(in collectionView: NSCollectionView) -> Int {
-		let wh = collectionView == collViewLeft ? "left" : "right"
+//		let wh = collectionView == collViewLeft ? "left" : "right"
 		let num = collectionView == collViewLeft ? LeftList.count : MainList.count
-		print("\(wh) sections: \(num)")
+//		print("\(wh) sections: \(num)")
 		return num
 	}
 	
@@ -29,16 +29,16 @@ extension ViewController: NSCollectionViewDataSource {
 		let wh = collectionView == collViewLeft ? "left" : "right"
 		if collectionView == collViewLeft {
 			let item = LeftList[indexPath.section].items[indexPath.item]
-			let cell = collViewLeft.makeItem(withIdentifier: /*collViewLeftID*/LeftCollViewItem.id, for: indexPath) as! LeftCollViewItem
 			print("\(wh) item: \(indexPath): \(item.title)")
+			let cell = collViewLeft.makeItem(withIdentifier: LeftCollViewItem.id, for: indexPath) as! LeftCollViewItem
 			cell.textMiddle.stringValue = item.title
 			cell.textLeft.stringValue = item.left
 			cell.textRight.stringValue = item.right
 			return cell
 		} else {
 			let item = MainList[indexPath.section].items[indexPath.item]
-			let cell = collViewRight.makeItem(withIdentifier: /*collViewRightID*/RightCollItem.id, for: indexPath) as! RightCollItem
 			print("\(wh) item: \(indexPath): \(item.title)")
+			let cell = collViewRight.makeItem(withIdentifier: RightCollItem.id, for: indexPath) as! RightCollItem
 			cell.textLabel.stringValue = item.title
 			cell.imageMain.image = item.image
 			return cell

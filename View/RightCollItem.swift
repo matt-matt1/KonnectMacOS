@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RightCollItem: NSCollectionViewItem {
+final class RightCollItem: NSCollectionViewItem {
 	
 	let stackVert: NSStackView = {
 		let view = NSStackView()
@@ -88,13 +88,13 @@ class RightCollItem: NSCollectionViewItem {
 	
 	override func loadView() {
 		self.view = NSView()
+		self.view.wantsLayer = true
 	}
 	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		view.wantsLayer = true
 		drawInner()
     }
 	

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 class ViewController: NSViewController {
 
 	var LeftList: [LeftItem] = [LeftItem(section: "device", items: [LeftSubItem(title: "Abcde"),
@@ -20,7 +21,7 @@ class ViewController: NSViewController {
 																   RightSubItem(image: nil, title: "second"),
 																   RightSubItem(image: nil, title: "third"),
 																   RightSubItem(image: nil, title: "fourth")])]
-	let flowLayout: NSCollectionViewFlowLayout = {
+/*	let flowLayout: NSCollectionViewFlowLayout = {
 		let view = NSCollectionViewFlowLayout()
 		view.minimumLineSpacing = 4
 
@@ -29,27 +30,31 @@ class ViewController: NSViewController {
 		view.sectionInset = NSEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 //		view.itemSize = NSSize(width: collViewLeft.intrinsicContentSize.width, height: 50.0)
 		return view
-	}()
-	let collViewLeft: NSCollectionView = {
+	}()*/
+	let collViewLeft = NSCollectionView()
+/*	let collViewLeft: NSCollectionView = {
 		let view = NSCollectionView()
 		view.isSelectable = true
 		view.allowsEmptySelection = true
 		view.allowsMultipleSelection = false
 		view.enclosingScrollView?.borderType = NSBorderType.noBorder
 		view.backgroundColors = [NSColor.clear]
+		view.enclosingScrollView?.borderType = NSBorderType.noBorder
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
-	}()
-	let collViewRight: NSCollectionView = {
+	}()*/
+	let collViewRight = NSCollectionView()
+/*	let collViewRight: NSCollectionView = {
 		let view = NSCollectionView()
 		view.isSelectable = true
 		view.allowsEmptySelection = true
 		view.allowsMultipleSelection = true
 		view.enclosingScrollView?.borderType = NSBorderType.noBorder
+		view.backgroundColors = [NSColor.clear]
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
-	}()
-	let gridLayout: NSCollectionViewGridLayout = {
+	}()*/
+/*	let gridLayout: NSCollectionViewGridLayout = {
 		let view = NSCollectionViewGridLayout()
 		view.minimumInteritemSpacing = 30.0
 		view.minimumLineSpacing = 30.0
@@ -58,7 +63,7 @@ class ViewController: NSViewController {
 		view.minimumItemSize = NSSize(width: 150.0, height: 150.0)
 		view.maximumItemSize = NSSize(width: 150.0, height: 150.0)
 		return view
-	}()
+	}()*/
 	let stackVert: NSStackView = {
 		let view = NSStackView()
 		view.alignment = NSLayoutConstraint.Attribute.leading
@@ -112,7 +117,6 @@ class ViewController: NSViewController {
 	let mainContent: NSView = {
 		let view = NSView()
 		view.wantsLayer = true
-//		view.layer?.backgroundColor = NSColor.blue.cgColor
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
@@ -122,11 +126,33 @@ class ViewController: NSViewController {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
+	var gapDivVertTop: CGFloat = 10
+	var gapDivVertBottom: CGFloat = 10
+	var widthDivVert: CGFloat = 1
 	let scrollLeft: NSScrollView = {
 		let view = NSScrollView()
 		view.wantsLayer = true
-		view.layer?.backgroundColor = NSColor.red.cgColor
+		view.drawsBackground = false
+		view.backgroundColor = NSColor.clear
+//		view.identifier = NSUserInterfaceItemIdentifier("scrollLeft")
+//		view.layer?.backgroundColor = NSColor.green.cgColor
 		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let drawer: NSClipView = {
+		let view = NSClipView()
+//		view.wantsLayer = true
+//		view.layer?.backgroundColor = NSColor.clear.cgColor
+//		view.drawsBackground = false
+//		view.backgroundColor = NSColor.clear
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	var aboveScrollLeft: CGFloat = 5
+	var belowScrollLeft: CGFloat = 5
+	var leftScrollLeft: CGFloat = 5
+	let clipLeft: NSClipView = {
+		let view = NSClipView()
 		return view
 	}()
 	let scrollRight: NSScrollView = {
@@ -136,36 +162,52 @@ class ViewController: NSViewController {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	let clipLeft: NSClipView = {
-		let view = NSClipView()
+//	var widthLeftConstraint: NSLayoutConstraint = {
+//		let view = NSLayoutConstraint()
+//		view.constant = 50
+//		return view
+//	}()
+	let maxWidthLeftTable: CGFloat = 250
+	let minWidthLeftTable: CGFloat = 30
+	var drawerIsOpen = true
+//	var drawerIsOpen = false
+	var tableLeft: /*NSOutlineView*/OutlineViewCustomDisclosure = {
+		let view = OutlineViewCustomDisclosure()//NSOutlineView()
+		view.rowHeight = 35
+//		view.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.sourceList
+		view.floatsGroupRows = false
+		view.indentationPerLevel = 16
+//		view.indentationMarkerFollowsCell = false
+		view.wantsLayer = true
+//		view.drawPageBorder(with: NSSize.zero)
+//		view.headerView = NSTableHeaderView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-	let clipRight: NSClipView = {
-		let view = NSClipView()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-	var widthLeftConstraint: NSLayoutConstraint = {
-		let view = NSLayoutConstraint()
-		view.constant = 50
-		return view
-	}()
+	let col1 = NSUserInterfaceItemIdentifier("tableCol1")
+	var outerMargins = NSEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.view.setFrameSize(NSSize(width: 800, height: 600))
 		self.view.wantsLayer = true
 		headerHeightConstraint.constant = 30
 		footerHeightConstraint.constant = 30
-		widthLeftConstraint.constant = 300
+//		widthLeftConstraint.constant = 300
 		drawRows()
 		drawMainContent()
-		configCollViews()
-		configureFlowLayout(collectionView: collViewLeft)
-		configureFlowLayout(collectionView: collViewRight)
-
+/*		configCollViews()
+		let layout = NSCollectionViewFlowLayout()
+		layout.minimumLineSpacing = 4
+		collViewLeft.collectionViewLayout = layout//NSCollectionViewFlowLayout()
+		collViewRight.collectionViewLayout = layout//NSCollectionViewFlowLayout()
+//		configureFlowLayout(collectionView: collViewLeft)
+//		configureFlowLayout(collectionView: collViewRight)
+//		configureGridLayout(collectionView: collViewRight)
+*/
+		drawTable()
 //		headerHeightConstraint.animator().constant = 20
 //		widthLeftConstraint.constant = 500
 /*		NSAnimationContext.runAnimationGroup({ (context) in
@@ -180,7 +222,21 @@ class ViewController: NSViewController {
 		}*/
 //		widthLeftConstraint.constant = 300
 //		stackHorz.layoutSubtreeIfNeeded()
+		let btn = NSButton(frame: NSRect(x: 10, y: 2, width: 100, height: 24))
+		btn.title = "Drawer"
+//		btn.wantsLayer = true
+//		btn.layer?.backgroundColor = NSColor.orange.cgColor
+		btn.action = #selector(toggleDrawer)
+		header.addSubview(btn)
 	}
+	
+	
+	@objc func toggleDrawer() {
+		self.drawerIsOpen = !drawerIsOpen
+//		print(drawerIsOpen)
+		self.view.layoutSubtreeIfNeeded()
+	}
+	
 
 	override var representedObject: Any? {
 		didSet {
@@ -190,11 +246,23 @@ class ViewController: NSViewController {
 	
 	
 	func configCollViews() {
+		collViewLeft.translatesAutoresizingMaskIntoConstraints = false
+		collViewLeft.isSelectable = true
+		collViewLeft.allowsEmptySelection = true
+		collViewLeft.allowsMultipleSelection = false
+		collViewLeft.enclosingScrollView?.borderType = NSBorderType.noBorder
+		collViewLeft.backgroundColors = [NSColor.clear]
 		collViewLeft.delegate = self
 		collViewLeft.dataSource = self
 		collViewLeft.enclosingScrollView?.borderType = NSBorderType.noBorder
 		collViewLeft.register(LeftCollViewItem.self, forItemWithIdentifier: LeftCollViewItem.id)
 		
+		collViewRight.translatesAutoresizingMaskIntoConstraints = false
+		collViewRight.isSelectable = true
+		collViewRight.allowsEmptySelection = true
+		collViewRight.allowsMultipleSelection = false
+		collViewRight.enclosingScrollView?.borderType = NSBorderType.noBorder
+		collViewRight.backgroundColors = [NSColor.clear]
 		collViewRight.delegate = self
 		collViewRight.dataSource = self
 		collViewRight.enclosingScrollView?.borderType = NSBorderType.noBorder
@@ -208,9 +276,9 @@ class ViewController: NSViewController {
 	func configureFlowLayout(collectionView: NSCollectionView) {
 		let flowLayout = NSCollectionViewFlowLayout()
 		//collViewLeftLayout.minimumInteritemSpacing = 30.0
-		flowLayout.minimumLineSpacing = 0
+/*		flowLayout.minimumLineSpacing = 0
 		flowLayout.sectionInset = NSEdgeInsets(top: 2.0, left: 5.0, bottom: 1.0, right: 5.0)
-		flowLayout.itemSize = NSSize(width: collectionView.intrinsicContentSize.width, height: 50.0)
+		flowLayout.itemSize = NSSize(width: collectionView.intrinsicContentSize.width, height: 50.0)*/
 		collectionView.collectionViewLayout = flowLayout
 		/*
 		flowLayout.minimumInteritemSpacing = 30.0
@@ -240,10 +308,10 @@ class ViewController: NSViewController {
 		stackVert.addArrangedSubview(mainContent)
 		stackVert.addArrangedSubview(footer)
 		NSLayoutConstraint.activate([
-			stackVert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10),
-			stackVert.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-			stackVert.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10),
-			stackVert.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+			stackVert.topAnchor.constraint(equalTo: self.view.topAnchor, constant: outerMargins.top),
+			stackVert.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: outerMargins.left),
+			stackVert.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -outerMargins.bottom),
+			stackVert.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -outerMargins.right),
 			
 			header.topAnchor.constraint(equalTo: stackVert.topAnchor, constant: 0),
 			header.leadingAnchor.constraint(equalTo: stackVert.leadingAnchor, constant: 0),
@@ -263,54 +331,121 @@ class ViewController: NSViewController {
 	
 	func drawMainContent() {
 		mainContent.addSubview(stackHorz)
-		stackHorz.addArrangedSubview(scrollLeft)
-		scrollLeft.addSubview(clipLeft)
-		clipLeft.addSubview(collViewLeft)
+/*		scrollLeft.documentView = clipLeft
+		clipLeft.documentView = tableLeft	*/
+///**/		scrollLeft.documentView = tableLeft	/**/
+		mainContent.addSubview(scrollLeft)
+//		stackHorz.addArrangedSubview(scrollLeft)
+		stackHorz.addArrangedSubview(drawer)
+//		scrollLeft.addSubview(clipLeft)
+//		clipLeft.addSubview(tableLeft)
+		scrollLeft.addSubview(tableLeft)////////
 		stackHorz.addArrangedSubview(divVert)
+//		scrollRight.documentView = collViewRight
 		stackHorz.addArrangedSubview(scrollRight)
-		scrollRight.addSubview(clipRight)
-		clipRight.addSubview(collViewRight)
+//		scrollRight.addSubview(collViewRight)
 		NSLayoutConstraint.activate([
 			stackHorz.topAnchor.constraint(equalTo: mainContent.topAnchor, constant: 0),
 			stackHorz.leadingAnchor.constraint(equalTo: mainContent.leadingAnchor, constant: 0),
 			stackHorz.bottomAnchor.constraint(equalTo: mainContent.bottomAnchor, constant: 0),
 			stackHorz.trailingAnchor.constraint(equalTo: mainContent.trailingAnchor, constant: 0),
 
-			scrollLeft.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
-			scrollLeft.leadingAnchor.constraint(equalTo: stackHorz.leadingAnchor, constant: 0),
-			scrollLeft.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
-//			scrollLeft.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
-//			scrollLeft.widthAnchor.constraint(lessThanOrEqualToConstant: 500),
-			scrollLeft.widthAnchor.constraint(equalToConstant: widthLeftConstraint.constant),
+			scrollLeft.topAnchor.constraint(equalTo: mainContent.topAnchor, constant: aboveScrollLeft),
+			scrollLeft.leadingAnchor.constraint(equalTo: mainContent.leadingAnchor, constant: leftScrollLeft),
+			scrollLeft.bottomAnchor.constraint(equalTo: mainContent.bottomAnchor, constant: -belowScrollLeft),
+			scrollLeft.widthAnchor.constraint(equalToConstant: maxWidthLeftTable),
+//			scrollLeft.trailingAnchor.constraint(equalTo: stackHorz.trailingAnchor, constant: 0),
 
+			drawer.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: aboveScrollLeft),
+			drawer.leadingAnchor.constraint(equalTo: stackHorz.leadingAnchor, constant: 0),
+			drawer.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: -belowScrollLeft),
+			drawer.widthAnchor.constraint(equalToConstant: drawerIsOpen ? maxWidthLeftTable : minWidthLeftTable),
+//			drawer.widthAnchor.constraint(equalToConstant: widthLeftConstraint.constant),
+
+/*
 			clipLeft.topAnchor.constraint(equalTo: scrollLeft.topAnchor, constant: 0),
 			clipLeft.leadingAnchor.constraint(equalTo: scrollLeft.leadingAnchor, constant: 0),
 			clipLeft.bottomAnchor.constraint(equalTo: scrollLeft.bottomAnchor, constant: 0),
+//			clipLeft.widthAnchor.constraint(equalToConstant: widthLeftConstraint.constant),
 			clipLeft.trailingAnchor.constraint(equalTo: scrollLeft.trailingAnchor, constant: 0),
-			
-			collViewLeft.topAnchor.constraint(equalTo: clipLeft.topAnchor, constant: 0),
-			collViewLeft.leadingAnchor.constraint(equalTo: clipLeft.leadingAnchor, constant: 0),
-			collViewLeft.bottomAnchor.constraint(equalTo: clipLeft.bottomAnchor, constant: 0),
-			collViewLeft.trailingAnchor.constraint(equalTo: clipLeft.trailingAnchor, constant: 0),
 
-			divVert.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 10),
-			divVert.widthAnchor.constraint(equalToConstant: 1),
-			divVert.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: -10),
+			tableLeft.topAnchor.constraint(equalTo: clipLeft.topAnchor, constant: 0),
+			tableLeft.leadingAnchor.constraint(equalTo: clipLeft.leadingAnchor, constant: 0),
+			tableLeft.trailingAnchor.constraint(equalTo: clipLeft.trailingAnchor, constant: 0),
+			tableLeft.bottomAnchor.constraint(equalTo: clipLeft.bottomAnchor, constant: 0),
+*/
+			tableLeft.topAnchor.constraint(equalTo: scrollLeft.topAnchor, constant: 0),
+			tableLeft.leadingAnchor.constraint(equalTo: scrollLeft.leadingAnchor, constant: 0),
+			tableLeft.trailingAnchor.constraint(equalTo: scrollLeft.trailingAnchor, constant: 0),
+/**/
+			divVert.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: gapDivVertTop),
+			divVert.widthAnchor.constraint(equalToConstant: widthDivVert),
+			divVert.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: -gapDivVertBottom),
 
 			scrollRight.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
 			scrollRight.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
 			scrollRight.trailingAnchor.constraint(equalTo: stackHorz.trailingAnchor, constant: 0),
-
-			clipRight.topAnchor.constraint(equalTo: scrollRight.topAnchor, constant: 0),
-			clipRight.leadingAnchor.constraint(equalTo: scrollRight.leadingAnchor, constant: 0),
-			clipRight.bottomAnchor.constraint(equalTo: scrollRight.bottomAnchor, constant: 0),
-			clipRight.trailingAnchor.constraint(equalTo: scrollRight.trailingAnchor, constant: 0),
-			
-			collViewRight.topAnchor.constraint(equalTo: clipRight.topAnchor, constant: 0),
-			collViewRight.leadingAnchor.constraint(equalTo: clipRight.leadingAnchor, constant: 0),
-			collViewRight.bottomAnchor.constraint(equalTo: clipRight.bottomAnchor, constant: 0),
-			collViewRight.trailingAnchor.constraint(equalTo: clipRight.trailingAnchor, constant: 0),
+/*
+			collViewRight.topAnchor.constraint(equalTo: scrollRight.topAnchor, constant: 0),
+			collViewRight.leadingAnchor.constraint(equalTo: scrollRight.leadingAnchor, constant: 0),
+			collViewRight.bottomAnchor.constraint(equalTo: scrollRight.bottomAnchor, constant: 0),
+			collViewRight.trailingAnchor.constraint(equalTo: scrollRight.trailingAnchor, constant: 0),
+*/
 			])
+	}
+	
+	
+	func drawMainContentWAS() {
+		mainContent.addSubview(stackHorz)
+		scrollLeft.documentView = collViewLeft
+		stackHorz.addArrangedSubview(scrollLeft)
+		scrollLeft.addSubview(collViewLeft)
+		stackHorz.addArrangedSubview(divVert)
+		scrollRight.documentView = collViewRight
+		stackHorz.addArrangedSubview(scrollRight)
+		scrollRight.addSubview(collViewRight)
+		NSLayoutConstraint.activate([
+			stackHorz.topAnchor.constraint(equalTo: mainContent.topAnchor, constant: 0),
+			stackHorz.leadingAnchor.constraint(equalTo: mainContent.leadingAnchor, constant: 0),
+			stackHorz.bottomAnchor.constraint(equalTo: mainContent.bottomAnchor, constant: 0),
+			stackHorz.trailingAnchor.constraint(equalTo: mainContent.trailingAnchor, constant: 0),
+			
+			scrollLeft.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
+			scrollLeft.leadingAnchor.constraint(equalTo: stackHorz.leadingAnchor, constant: 0),
+			scrollLeft.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
+			scrollLeft.widthAnchor.constraint(equalToConstant: drawerIsOpen ? maxWidthLeftTable : minWidthLeftTable),
+//			scrollLeft.widthAnchor.constraint(equalToConstant: widthLeftConstraint.constant),
+			
+			collViewLeft.topAnchor.constraint(equalTo: scrollLeft.topAnchor, constant: 0),
+			collViewLeft.leadingAnchor.constraint(equalTo: scrollLeft.leadingAnchor, constant: 0),
+			collViewLeft.bottomAnchor.constraint(equalTo: scrollLeft.bottomAnchor, constant: 0),
+			collViewLeft.trailingAnchor.constraint(equalTo: scrollLeft.trailingAnchor, constant: 0),
+
+			divVert.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 10),
+			divVert.widthAnchor.constraint(equalToConstant: 1),
+			divVert.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: -10),
+			
+			scrollRight.topAnchor.constraint(equalTo: stackHorz.topAnchor, constant: 0),
+			scrollRight.bottomAnchor.constraint(equalTo: stackHorz.bottomAnchor, constant: 0),
+			scrollRight.trailingAnchor.constraint(equalTo: stackHorz.trailingAnchor, constant: 0),
+			
+			collViewRight.topAnchor.constraint(equalTo: scrollRight.topAnchor, constant: 0),
+			collViewRight.leadingAnchor.constraint(equalTo: scrollRight.leadingAnchor, constant: 0),
+			collViewRight.bottomAnchor.constraint(equalTo: scrollRight.bottomAnchor, constant: 0),
+			collViewRight.trailingAnchor.constraint(equalTo: scrollRight.trailingAnchor, constant: 0),
+			])
+	}
+
+	
+	func drawTable() {
+		let col = NSTableColumn(identifier: col1)
+		col.maxWidth = 256
+		col.isEditable = false
+		tableLeft.addTableColumn(col)
+		tableLeft.outlineTableColumn = col
+		tableLeft.dataSource = self
+		tableLeft.delegate = self
+		tableLeft.action = #selector(onItemClicked)
 	}
 
 
