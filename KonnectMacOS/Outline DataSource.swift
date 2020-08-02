@@ -34,7 +34,10 @@ extension ViewController: NSOutlineViewDataSource {
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
 		if item == nil {
 			let val = LeftList[index].section
+//			outlineView.expandItem(val, expandChildren: true)
+//			outlineView.expandItem(val)
 //			print("section name: \(val)")
+//			outlineView.isItemExpanded(nil) = true
 			return val
 		} else {
 			if let val = item as? String {
@@ -55,6 +58,10 @@ extension ViewController: NSOutlineViewDataSource {
 		guard let _ = item as? String else { 	return false	 }
 		return true
 	}
+	
+//	func outlineView(_ outlineView: NSOutlineView, shouldExpandItem item: Any) -> Bool {
+//		return true
+//	}
 
 
 }

@@ -18,6 +18,10 @@
 		AA39EB0E24D0854B0000EA70 /* CollViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0D24D0854B0000EA70 /* CollViewDatasource.swift */; };
 		AA39EB1024D091D20000EA70 /* RightItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB0F24D091D20000EA70 /* RightItem.swift */; };
 		AA39EB1224D0928A0000EA70 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EB1124D0928A0000EA70 /* Items.swift */; };
+		AA6303D324D72F76004558BB /* NSView+bringToFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D224D72F76004558BB /* NSView+bringToFront.swift */; };
+		AA6303D524D77224004558BB /* ToolbarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */; };
+		AA6303D724D7772B004558BB /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D624D7772B004558BB /* Toolbar.swift */; };
+		AA6303D924D77C62004558BB /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D824D77C62004558BB /* WindowController.swift */; };
 		AAB92E1724D5B07A008E04D1 /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1624D5B07A008E04D1 /* TableRow.swift */; };
 		AAB92E1B24D5CCF1008E04D1 /* Outline Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1A24D5CCF1008E04D1 /* Outline Delegate.swift */; };
 		AAB92E1D24D5CD33008E04D1 /* Outline DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1C24D5CD33008E04D1 /* Outline DataSource.swift */; };
@@ -40,6 +44,10 @@
 		AA39EB0D24D0854B0000EA70 /* CollViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollViewDatasource.swift; sourceTree = "<group>"; };
 		AA39EB0F24D091D20000EA70 /* RightItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightItem.swift; sourceTree = "<group>"; };
 		AA39EB1124D0928A0000EA70 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		AA6303D224D72F76004558BB /* NSView+bringToFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+bringToFront.swift"; sourceTree = "<group>"; };
+		AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemConfiguration.swift; sourceTree = "<group>"; };
+		AA6303D624D7772B004558BB /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		AA6303D824D77C62004558BB /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		AAB92E1624D5B07A008E04D1 /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 		AAB92E1A24D5CCF1008E04D1 /* Outline Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outline Delegate.swift"; sourceTree = "<group>"; };
 		AAB92E1C24D5CD33008E04D1 /* Outline DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outline DataSource.swift"; sourceTree = "<group>"; };
@@ -80,7 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				AA17305124CF91CA004454AB /* AppDelegate.swift */,
+				AA6303D824D77C62004558BB /* WindowController.swift */,
+				AA6303D624D7772B004558BB /* Toolbar.swift */,
 				AA17305324CF91CA004454AB /* ViewController.swift */,
+				AA6303D224D72F76004558BB /* NSView+bringToFront.swift */,
 				AAB92E1A24D5CCF1008E04D1 /* Outline Delegate.swift */,
 				AAB92E1C24D5CD33008E04D1 /* Outline DataSource.swift */,
 				AA39EB0B24D0850A0000EA70 /* CollViewDelegate.swift */,
@@ -99,6 +110,7 @@
 				AA39EB0924D0836F0000EA70 /* LeftItem.swift */,
 				AA39EB0F24D091D20000EA70 /* RightItem.swift */,
 				AA39EB1124D0928A0000EA70 /* Items.swift */,
+				AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,15 +203,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB92E1724D5B07A008E04D1 /* TableRow.swift in Sources */,
+				AA6303D324D72F76004558BB /* NSView+bringToFront.swift in Sources */,
 				AA17305424CF91CA004454AB /* ViewController.swift in Sources */,
+				AA6303D524D77224004558BB /* ToolbarItemConfiguration.swift in Sources */,
 				AA39EB0A24D0836F0000EA70 /* LeftItem.swift in Sources */,
 				AAB92E2124D6090A008E04D1 /* OutlineViewCustomDisclosure.swift in Sources */,
 				AA39EB0524D07F9A0000EA70 /* RightCollItem.swift in Sources */,
 				AA39EB0E24D0854B0000EA70 /* CollViewDatasource.swift in Sources */,
 				AA39EB1224D0928A0000EA70 /* Items.swift in Sources */,
 				AA39EB0124D072EF0000EA70 /* LeftCollViewItem.swift in Sources */,
+				AA6303D724D7772B004558BB /* Toolbar.swift in Sources */,
 				AA17305224CF91CA004454AB /* AppDelegate.swift in Sources */,
 				AAB92E1B24D5CCF1008E04D1 /* Outline Delegate.swift in Sources */,
+				AA6303D924D77C62004558BB /* WindowController.swift in Sources */,
 				AAB92E1F24D5F7D6008E04D1 /* VerticallyCenteredTextFieldCell.swift in Sources */,
 				AA39EB0C24D0850A0000EA70 /* CollViewDelegate.swift in Sources */,
 				AAB92E1D24D5CD33008E04D1 /* Outline DataSource.swift in Sources */,

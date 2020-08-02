@@ -53,6 +53,7 @@ class TableRow: NSView {
 		view.isBezeled = false
 		view.isBordered = false
 		view.isEditable = false
+//		view.textColor = NSColor.white
 		view.isSelectable = true
 		view.drawsBackground = false
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +84,16 @@ class TableRow: NSView {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
-//	/*private*/ var highlighted = false
+//	/*private*/ var highlighted = false {
+//		didSet {
+//			viewLeft.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
+//			viewCenter.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
+//			viewRight.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
+//			viewLeft.textColor = self.highlighted ? NSColor.white : NSColor.darkGray
+//			viewCenter.textColor = self.highlighted ? NSColor.white : NSColor.darkGray
+//			viewRight.textColor = self.highlighted ? NSColor.white : NSColor.darkGray
+//		}
+//	}
 
 	
     override func draw(_ dirtyRect: NSRect) {
