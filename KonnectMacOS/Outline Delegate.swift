@@ -5,7 +5,7 @@
 //  Created by Yuma Technical Inc. on 2020-08-01.
 //  Copyright © 2020 Yuma Technical Inc. All rights reserved.
 //
-
+/*
 import Cocoa
 
 
@@ -45,11 +45,20 @@ extension ViewController: NSOutlineViewDelegate {
 		if let view = tableLeft.view(atColumn: tableLeft.clickedColumn, row: tableLeft.clickedRow, makeIfNecessary: false) as? TableRow {
 			view.highlighted = true
 		}*/
+		/*
 		let item = tableLeft.item(atRow: tableLeft.clickedRow)
 		let title = (item as? LeftSubItem)?.title ?? item as! String
 //		print("row \(tableLeft.clickedRow), col \(tableLeft.clickedColumn) clicked, title: \(title)")
-		print("selected: \(title)")
+//		print("selected: \(title)")
+		switch title {
+		case "photos":
+			let vc = Photos.shared
+			vc.putPhotosInColl()
+		default:
+			print("selected \(title)")
+		}*/
 	}
 
 
 }
+*/

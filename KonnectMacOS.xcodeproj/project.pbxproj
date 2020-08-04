@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7481F2F6EDA2A6FED871F659 /* Pods_KonnectMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F703710B38C7EC0294CB962C /* Pods_KonnectMacOS.framework */; };
 		AA17305224CF91CA004454AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA17305124CF91CA004454AB /* AppDelegate.swift */; };
 		AA17305424CF91CA004454AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA17305324CF91CA004454AB /* ViewController.swift */; };
 		AA17305624CF91CD004454AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA17305524CF91CD004454AB /* Assets.xcassets */; };
@@ -22,14 +23,22 @@
 		AA6303D524D77224004558BB /* ToolbarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */; };
 		AA6303D724D7772B004558BB /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D624D7772B004558BB /* Toolbar.swift */; };
 		AA6303D924D77C62004558BB /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6303D824D77C62004558BB /* WindowController.swift */; };
+		AA8FF9AF24D8481600956E19 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FF9AE24D8481600956E19 /* Photos.swift */; };
+		AA8FF9B124D850F900956E19 /* Table DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FF9B024D850F900956E19 /* Table DataSource.swift */; };
+		AA8FF9B324D85CB000956E19 /* Table Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FF9B224D85CB000956E19 /* Table Delegate.swift */; };
+		AA8FF9B724D86A4200956E19 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FF9B624D86A4200956E19 /* MenuItem.swift */; };
+		AA8FF9B924D8753000956E19 /* MenuItem Selected.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FF9B824D8753000956E19 /* MenuItem Selected.swift */; };
 		AAB92E1724D5B07A008E04D1 /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1624D5B07A008E04D1 /* TableRow.swift */; };
 		AAB92E1B24D5CCF1008E04D1 /* Outline Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1A24D5CCF1008E04D1 /* Outline Delegate.swift */; };
 		AAB92E1D24D5CD33008E04D1 /* Outline DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1C24D5CD33008E04D1 /* Outline DataSource.swift */; };
 		AAB92E1F24D5F7D6008E04D1 /* VerticallyCenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E1E24D5F7D6008E04D1 /* VerticallyCenteredTextFieldCell.swift */; };
 		AAB92E2124D6090A008E04D1 /* OutlineViewCustomDisclosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E2024D6090A008E04D1 /* OutlineViewCustomDisclosure.swift */; };
+		AAC2626C24D9A08200D14352 /* NSTableView+Clickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2626B24D9A08200D14352 /* NSTableView+Clickable.swift */; };
+		AAC2626F24DA106A00D14352 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2626E24DA106A00D14352 /* FontAwesome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14800F63874F8EA55E9D3FB4 /* Pods-KonnectMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonnectMacOS.release.xcconfig"; path = "Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		AA17304E24CF91CA004454AB /* KonnectMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonnectMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA17305124CF91CA004454AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA17305324CF91CA004454AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,11 +57,21 @@
 		AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemConfiguration.swift; sourceTree = "<group>"; };
 		AA6303D624D7772B004558BB /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		AA6303D824D77C62004558BB /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		AA8FF9AE24D8481600956E19 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		AA8FF9B024D850F900956E19 /* Table DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Table DataSource.swift"; sourceTree = "<group>"; };
+		AA8FF9B224D85CB000956E19 /* Table Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Table Delegate.swift"; sourceTree = "<group>"; };
+		AA8FF9B624D86A4200956E19 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		AA8FF9B824D8753000956E19 /* MenuItem Selected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem Selected.swift"; sourceTree = "<group>"; };
 		AAB92E1624D5B07A008E04D1 /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 		AAB92E1A24D5CCF1008E04D1 /* Outline Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outline Delegate.swift"; sourceTree = "<group>"; };
 		AAB92E1C24D5CD33008E04D1 /* Outline DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outline DataSource.swift"; sourceTree = "<group>"; };
 		AAB92E1E24D5F7D6008E04D1 /* VerticallyCenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextFieldCell.swift; sourceTree = "<group>"; };
 		AAB92E2024D6090A008E04D1 /* OutlineViewCustomDisclosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewCustomDisclosure.swift; sourceTree = "<group>"; };
+		AAC2626B24D9A08200D14352 /* NSTableView+Clickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Clickable.swift"; sourceTree = "<group>"; };
+		AAC2626E24DA106A00D14352 /* FontAwesome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		AAC2627024DA109400D14352 /* CocoaFontAwesome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaFontAwesome.h; sourceTree = "<group>"; };
+		BDEFCC45D1C305DF894886F9 /* Pods-KonnectMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonnectMacOS.debug.xcconfig"; path = "Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F703710B38C7EC0294CB962C /* Pods_KonnectMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KonnectMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,19 +79,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7481F2F6EDA2A6FED871F659 /* Pods_KonnectMacOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A2FCE315222A95060AABB61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDEFCC45D1C305DF894886F9 /* Pods-KonnectMacOS.debug.xcconfig */,
+				14800F63874F8EA55E9D3FB4 /* Pods-KonnectMacOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AA17304524CF91CA004454AB = {
 			isa = PBXGroup;
 			children = (
+				AAC2626D24DA104B00D14352 /* CocoaFontAwesome */,
+				AAC2626A24D9A06C00D14352 /* Extension */,
+				AA8FF9AD24D847EB00956E19 /* Classes */,
 				AAB92E1524D5B055008E04D1 /* View */,
 				AA39EB0824D083430000EA70 /* Model */,
 				AA17305024CF91CA004454AB /* KonnectMacOS */,
 				AA17304F24CF91CA004454AB /* Products */,
+				5A2FCE315222A95060AABB61 /* Pods */,
+				E096A318C9F6ABE03830B5DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +134,9 @@
 				AA17305724CF91CD004454AB /* Main.storyboard */,
 				AA17305A24CF91CD004454AB /* Info.plist */,
 				AA17305B24CF91CD004454AB /* KonnectMacOS.entitlements */,
+				AA8FF9B024D850F900956E19 /* Table DataSource.swift */,
+				AA8FF9B224D85CB000956E19 /* Table Delegate.swift */,
+				AA8FF9B824D8753000956E19 /* MenuItem Selected.swift */,
 			);
 			path = KonnectMacOS;
 			sourceTree = "<group>";
@@ -111,8 +148,17 @@
 				AA39EB0F24D091D20000EA70 /* RightItem.swift */,
 				AA39EB1124D0928A0000EA70 /* Items.swift */,
 				AA6303D424D77224004558BB /* ToolbarItemConfiguration.swift */,
+				AA8FF9B624D86A4200956E19 /* MenuItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AA8FF9AD24D847EB00956E19 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AA8FF9AE24D8481600956E19 /* Photos.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		AAB92E1524D5B055008E04D1 /* View */ = {
@@ -127,6 +173,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AAC2626A24D9A06C00D14352 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AAC2626B24D9A08200D14352 /* NSTableView+Clickable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AAC2626D24DA104B00D14352 /* CocoaFontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				AAC2626E24DA106A00D14352 /* FontAwesome.swift */,
+				AAC2627024DA109400D14352 /* CocoaFontAwesome.h */,
+			);
+			path = CocoaFontAwesome;
+			sourceTree = "<group>";
+		};
+		E096A318C9F6ABE03830B5DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F703710B38C7EC0294CB962C /* Pods_KonnectMacOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA17305E24CF91CD004454AB /* Build configuration list for PBXNativeTarget "KonnectMacOS" */;
 			buildPhases = (
+				D2DB71FCA3FBB6A4EA3D1452 /* [CP] Check Pods Manifest.lock */,
 				AA17304A24CF91CA004454AB /* Sources */,
 				AA17304B24CF91CA004454AB /* Frameworks */,
 				AA17304C24CF91CA004454AB /* Resources */,
+				FA2022AAB762549B3399B299 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,16 +270,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D2DB71FCA3FBB6A4EA3D1452 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KonnectMacOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA2022AAB762549B3399B299 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA17304A24CF91CA004454AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC2626F24DA106A00D14352 /* FontAwesome.swift in Sources */,
+				AA8FF9B724D86A4200956E19 /* MenuItem.swift in Sources */,
 				AAB92E1724D5B07A008E04D1 /* TableRow.swift in Sources */,
 				AA6303D324D72F76004558BB /* NSView+bringToFront.swift in Sources */,
 				AA17305424CF91CA004454AB /* ViewController.swift in Sources */,
 				AA6303D524D77224004558BB /* ToolbarItemConfiguration.swift in Sources */,
 				AA39EB0A24D0836F0000EA70 /* LeftItem.swift in Sources */,
+				AA8FF9B124D850F900956E19 /* Table DataSource.swift in Sources */,
+				AAC2626C24D9A08200D14352 /* NSTableView+Clickable.swift in Sources */,
+				AA8FF9B924D8753000956E19 /* MenuItem Selected.swift in Sources */,
+				AA8FF9AF24D8481600956E19 /* Photos.swift in Sources */,
 				AAB92E2124D6090A008E04D1 /* OutlineViewCustomDisclosure.swift in Sources */,
 				AA39EB0524D07F9A0000EA70 /* RightCollItem.swift in Sources */,
 				AA39EB0E24D0854B0000EA70 /* CollViewDatasource.swift in Sources */,
@@ -217,6 +338,7 @@
 				AAB92E1B24D5CCF1008E04D1 /* Outline Delegate.swift in Sources */,
 				AA6303D924D77C62004558BB /* WindowController.swift in Sources */,
 				AAB92E1F24D5F7D6008E04D1 /* VerticallyCenteredTextFieldCell.swift in Sources */,
+				AA8FF9B324D85CB000956E19 /* Table Delegate.swift in Sources */,
 				AA39EB0C24D0850A0000EA70 /* CollViewDelegate.swift in Sources */,
 				AAB92E1D24D5CD33008E04D1 /* Outline DataSource.swift in Sources */,
 				AA39EB1024D091D20000EA70 /* RightItem.swift in Sources */,
@@ -354,6 +476,7 @@
 		};
 		AA17305F24CF91CD004454AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDEFCC45D1C305DF894886F9 /* Pods-KonnectMacOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KonnectMacOS/KonnectMacOS.entitlements;
@@ -373,6 +496,7 @@
 		};
 		AA17306024CF91CD004454AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14800F63874F8EA55E9D3FB4 /* Pods-KonnectMacOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KonnectMacOS/KonnectMacOS.entitlements;

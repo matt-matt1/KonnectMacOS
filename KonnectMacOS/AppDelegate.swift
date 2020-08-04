@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import AwesomeEnum
 
 
 var running = true
@@ -29,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate/*, NSToolbarDelegate*/ {
 	
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
+		AwesomePro.loadFonts(from: Bundle.main)
 /*		toolbar = NSToolbar(identifier: NSToolbar.Identifier("TheToolbarIdentifier"))
 		toolbar.allowsUserCustomization = true
 		toolbar.delegate = self

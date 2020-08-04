@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 class WindowController: NSWindowController {
 
 	var tabViewController: NSTabViewController?

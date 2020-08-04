@@ -5,7 +5,7 @@
 //  Created by Yuma Technical Inc. on 2020-08-01.
 //  Copyright © 2020 Yuma Technical Inc. All rights reserved.
 //
-
+/*
 import Cocoa
 
 
@@ -25,3 +25,4 @@ class VerticallyCenteredTextFieldCell: NSTextFieldCell {
 
 
 }
+*/
