@@ -31,6 +31,9 @@ class MenuItem {
 		 title: NSAttributedString,
 		 far: NSAttributedString? = NSAttributedString(string: ""),
 		 farImg: NSImage? = nil,
+		 margin: NSEdgeInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+		 gapLeftTitle: CGFloat = 0,
+		 gapTitleRight: CGFloat = 0,
 		 isGroup: Bool = false) {
 		self.left = left
 		self.leftImg = leftImg

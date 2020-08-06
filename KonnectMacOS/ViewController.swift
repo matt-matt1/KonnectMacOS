@@ -7,30 +7,36 @@
 //
 
 import Cocoa
-import AwesomeEnum
+//import AwesomeEnum
+import CocoaFontAwesome
 
 
 class ViewController: NSViewController {
 
-	var menuItems: [MenuItem] = [
+	static var iconSize = CGSize(width: 28, height: 28)
+	lazy var menuItems: [MenuItem] = [
 		MenuItem(left: nil,
 				 leftImg: nil,//Awesome.Brand.android.asImage(size: CGSize(width: 40, height: 40), color: .red, backgroundColor: .blue),
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "DEVICE"),
 				 far: nil,
-				 farImg: nil,
+				 farImg: NSImage.fontAwesomeIcon(name: FontAwesome.check, style: FontAwesomeStyle.solid, textColor: NSColor.orange, size: ViewController.iconSize),//nil,
+//				 margin: NSEdgeInsets(top: 5, left: 0, bottom: 1, right: 0),
+//				 gapLeftTitle: 50,
+//				 gapTitleRight: 1,
 				 isGroup: true),
 		MenuItem(left: nil,//Awesome.Regular.envelopeOpen.asAttributedText(fontSize: 17, color: .red, backgroundColor: .blue),
-				 leftImg: nil,
+				 leftImg: NSImage.fontAwesomeIcon(name: FontAwesome.images, style: FontAwesomeStyle.solid, textColor: NSColor.red, size: ViewController.iconSize),//nil,
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "Photos"),
 				 far: nil,
-				 farImg: nil,
+				 farImg: NSImage.fontAwesomeIcon(name: FontAwesome.check, style: FontAwesomeStyle.solid, textColor: NSColor.orange, size: ViewController.iconSize),//nil,
+//				 gapLeftTitle: 50,
 				 isGroup: false),
-		MenuItem(left: nil,
-				 leftImg: nil,
+		MenuItem(left: NSAttributedString(string: String.fontAwesomeIcon(name: FontAwesome.music), attributes: [NSAttributedString.Key.foregroundColor : NSColor.blue, NSAttributedString.Key.font : NSFont.fontAwesome(ofSize: 15, style: FontAwesomeStyle.regular)]),//nil,
+				 leftImg: NSImage.fontAwesomeIcon(name: FontAwesome.music, style: FontAwesomeStyle.solid, textColor: NSColor.brown, size: ViewController.iconSize),//nil,
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "Music"),
@@ -38,7 +44,7 @@ class ViewController: NSViewController {
 				 farImg: nil,
 				 isGroup: false),
 		MenuItem(left: nil,
-				 leftImg: nil,
+				 leftImg: NSImage.fontAwesomeIcon(name: FontAwesome.file, style: FontAwesomeStyle.solid, textColor: NSColor.blue, size: ViewController.iconSize),//nil,
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "Files"),
@@ -54,7 +60,7 @@ class ViewController: NSViewController {
 				 farImg: nil,
 				 isGroup: true),
 		MenuItem(left: nil,
-				 leftImg: nil,
+				 leftImg: NSImage.fontAwesomeIcon(name: FontAwesome.upload, style: FontAwesomeStyle.solid, textColor: NSColor.orange, size: ViewController.iconSize),//nil,
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "my FTP"),
@@ -62,7 +68,7 @@ class ViewController: NSViewController {
 				 farImg: nil,
 				 isGroup: false),
 		MenuItem(left: nil,
-				 leftImg: nil,
+				 leftImg: NSImage.fontAwesomeIcon(name: FontAwesome.sitemap, style: FontAwesomeStyle.solid, textColor: NSColor.purple, size: ViewController.iconSize),//nil,
 				 right: nil,
 				 rightImg: nil,
 				 title: NSAttributedString(string: "my network"),

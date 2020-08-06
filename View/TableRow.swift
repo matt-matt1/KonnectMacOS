@@ -11,26 +11,26 @@ import Cocoa
 
 class TableRow: /*NSView*/NSTableCellView {
 
-	var left: String = "L" {
-		didSet {
-			viewLeft.stringValue = left
-		}
-	}
-	var center: String = "center" {
-		didSet {
-			viewCenter.stringValue = center
-		}
-	}
-	var right: String = "R" {
-		didSet {
-			viewRight.stringValue = right
-		}
-	}
-	var farRight: String = "R" {
-		didSet {
-			viewFarRight.stringValue = farRight
-		}
-	}
+	var left: String = "L" //{
+//		didSet {
+//			viewLeft.stringValue = left
+//		}
+//	}
+	var center: String = "center" //{
+//		didSet {
+//			viewCenter.stringValue = center
+//		}
+//	}
+	var right: String = "R" //{
+//		didSet {
+//			viewRight.stringValue = right
+//		}
+//	}
+	var farRight: String = "R" //{
+//		didSet {
+//			viewFarRight.stringValue = farRight
+//		}
+//	}
 	var inset = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 	var gapLeftCenter: CGFloat = 1
 	var gapCenterRight: CGFloat = 1
@@ -99,6 +99,8 @@ class TableRow: /*NSView*/NSTableCellView {
 	}()
 	private let imageFar: NSImageView = {
 		let view = NSImageView()
+		view.alignment = NSTextAlignment.right
+//		view.imageAlignment = NSImageAlignment.alignRight
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
@@ -112,6 +114,45 @@ class TableRow: /*NSView*/NSTableCellView {
 //			viewRight.textColor = self.highlighted ? NSColor.white : NSColor.darkGray
 //		}
 //	}
+	let stackHorz: NSStackView = {
+		let view = NSStackView()
+		view.orientation = NSUserInterfaceLayoutOrientation.horizontal
+		view.spacing = 10
+//		view.distribution = NSStackView.Distribution.fill
+//		view.alignment = NSLayoutConstraint.Attribute.centerY
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	private let leftContainer: NSView = {
+		let view = NSView()
+//		view.wantsLayer = true
+//		view.layer?.backgroundColor = NSColor.green.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	private let centerContainer: NSView = {
+		let view = NSView()
+//		view.wantsLayer = true
+//		view.layer?.backgroundColor = NSColor.red.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	private let rightContainer: NSView = {
+		let view = NSView()
+//		view.wantsLayer = true
+//		view.layer?.backgroundColor = NSColor.brown.cgColor
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	let stackCenter: NSStackView = {
+		let view = NSStackView()
+		view.orientation = NSUserInterfaceLayoutOrientation.horizontal
+		view.spacing = 10
+		//		view.distribution = NSStackView.Distribution.fill
+//				view.alignment = NSLayoutConstraint.Attribute.centerY
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
 
 	
     override func draw(_ dirtyRect: NSRect) {
@@ -121,49 +162,80 @@ class TableRow: /*NSView*/NSTableCellView {
 	}
 	
 	func makeView() {
-        addSubview(viewLeft)
-		addSubview(imageLeft)
-		addSubview(viewCenter)
-		addSubview(viewRight)
-		addSubview(imageRight)
-		addSubview(viewFarRight)
-		addSubview(imageFar)
+		addSubview(stackHorz)
+		stackHorz.addArrangedSubview(leftContainer)
+		if imageLeft.image != nil {
+			leftContainer.addSubview(imageLeft)
+			imageLeft.centerXAnchor.constraint(equalTo: leftContainer.centerXAnchor).isActive = true
+			imageLeft.centerYAnchor.constraint(equalTo: leftContainer.centerYAnchor).isActive = true
+		}
+		stackHorz.addArrangedSubview(centerContainer)
+		centerContainer.addSubview(stackCenter)
+		stackCenter.addArrangedSubview(viewCenter)
+		if imageRight.image != nil {
+			stackCenter.addArrangedSubview(imageRight)
+		}
+		stackHorz.addArrangedSubview(rightContainer)
+		if !viewFarRight.stringValue.isEmpty {
+			rightContainer.addSubview(viewFarRight)
+		}
+		if imageFar.image != nil {
+			rightContainer.addSubview(imageFar)
+			imageFar.centerYAnchor.constraint(equalTo: rightContainer.centerYAnchor).isActive = true
+		}
 		NSLayoutConstraint.activate([
-			viewLeft.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			viewLeft.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset.left),
-			viewLeft.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+			stackHorz.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+			stackHorz.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: gapLeftCenter),
+			stackHorz.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+			stackHorz.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -gapCenterRight),
+
+			leftContainer.leadingAnchor.constraint(equalTo: stackHorz.leadingAnchor, constant: 0),
+			leftContainer.widthAnchor.constraint(equalToConstant: ViewController.iconSize.width + gapLeftCenter),
 			
-			imageLeft.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			imageLeft.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset.left),
-			imageLeft.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+			stackCenter.centerYAnchor.constraint(equalTo: centerContainer.centerYAnchor),
 
-			viewCenter.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-//			viewCenter.leadingAnchor.constraint(equalTo: viewLeft.trailingAnchor, constant: gapLeftCenter),
-			viewCenter.leadingAnchor.constraint(greaterThanOrEqualTo: viewLeft.trailingAnchor, constant: gapLeftCenter),
-//			viewCenter.leadingAnchor.constraint(equalTo: imageLeft.trailingAnchor, constant: gapLeftCenter),
-/*			viewCenter.leadingAnchor.constraint(greaterThanOrEqualTo: imageLeft.trailingAnchor, constant: gapLeftCenter),*/
-			viewCenter.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
-//			viewCenter.trailingAnchor.constraint(equalTo: viewRight.leadingAnchor, constant: -gapCenterRight),
-			viewCenter.trailingAnchor.constraint(lessThanOrEqualTo: viewRight.leadingAnchor, constant: -gapCenterRight),
-//			viewCenter.trailingAnchor.constraint(equalTo: imageRight.leadingAnchor, constant: -gapCenterRight),
-/*			viewCenter.trailingAnchor.constraint(lessThanOrEqualTo: imageRight.leadingAnchor, constant: -gapCenterRight),*/
-			
-			viewRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			viewRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
-			viewRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
-
-			imageRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			imageRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
-			imageRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
-
-			viewFarRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			viewFarRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
-			viewFarRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
-
-			imageFar.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
-			imageFar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
-			imageFar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+			rightContainer.trailingAnchor.constraint(equalTo: stackHorz.trailingAnchor, constant: 0),
+			rightContainer.widthAnchor.constraint(equalToConstant: ViewController.iconSize.width + gapCenterRight),
 			])
+/*
+		NSLayoutConstraint.activate([
+		viewLeft.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		viewLeft.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset.left),
+		viewLeft.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		
+		imageLeft.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		imageLeft.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset.left),
+		imageLeft.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		
+		viewCenter.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		//			viewCenter.leadingAnchor.constraint(equalTo: viewLeft.trailingAnchor, constant: gapLeftCenter),
+		/*			viewCenter.leadingAnchor.constraint(greaterThanOrEqualTo: viewLeft.trailingAnchor, constant: gapLeftCenter),*/
+		//			viewCenter.leadingAnchor.constraint(equalTo: imageLeft.trailingAnchor, constant: gapLeftCenter),
+		viewCenter.leadingAnchor.constraint(equalTo: imageLeft.trailingAnchor, constant: gapLeftCenter),
+		viewCenter.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		//			viewCenter.trailingAnchor.constraint(equalTo: viewRight.leadingAnchor, constant: -gapCenterRight),
+		/*			viewCenter.trailingAnchor.constraint(lessThanOrEqualTo: viewRight.leadingAnchor, constant: -gapCenterRight),*/
+		//			viewCenter.trailingAnchor.constraint(equalTo: imageRight.leadingAnchor, constant: -gapCenterRight),
+		viewCenter.trailingAnchor.constraint(equalTo: imageRight.leadingAnchor, constant: -gapCenterRight),
+		
+		viewRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		viewRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
+		viewRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		
+		imageRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		imageRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
+		imageRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		
+		viewFarRight.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		viewFarRight.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
+		viewFarRight.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		
+		imageFar.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top),
+		imageFar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset.right),
+		imageFar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.bottom),
+		])
+
+		*/
 //		viewLeft.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
 //		viewCenter.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
 //		viewRight.backgroundColor = self.highlighted ? NSColor.selectedControlColor : NSColor.clear
@@ -222,7 +294,7 @@ class TableRow: /*NSView*/NSTableCellView {
 		if let far = item.farImg {
 			imageFar.image = far
 		}
-		viewLeft.attributedStringValue = item.title
+		viewCenter.attributedStringValue = item.title
 //		left = item.left ?? "L"
 //		right = item.right ?? "R"
 //		farRight = item.far ?? "OK"

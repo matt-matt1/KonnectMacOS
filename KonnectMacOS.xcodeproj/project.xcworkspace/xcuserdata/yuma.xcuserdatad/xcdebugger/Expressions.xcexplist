@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.tableView(_:objectValueFor:row:):Table DataSource.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "itam as? String">
+            </PersistentString>
+            <PersistentString
+               value = "item as? LeftItem">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.collectionView(_:itemForRepresentedObjectAt:):CollViewDatasource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.tableView(_:viewFor:row:):Table DataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableColumn?.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "view as? TableRow">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.numberOfRows(in:):Table DataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menuItems.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.numberOfSections(in:):CollViewDatasource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView == collViewLeft">
+            </PersistentString>
+            <PersistentString
+               value = "MainList.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.outlineView(_:child:ofItem:):Outline DataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item as? String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.outlineView(_:numberOfChildrenOfItem:):Outline DataSource.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item as? String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

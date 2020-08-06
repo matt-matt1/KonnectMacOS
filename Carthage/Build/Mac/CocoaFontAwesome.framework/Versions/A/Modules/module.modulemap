@@ -1,0 +1,11 @@
+framework module CocoaFontAwesome {
+  umbrella header "CocoaFontAwesome.h"
+
+  export *
+  module * { export * }
+}
+
+module CocoaFontAwesome.Swift {
+    header "CocoaFontAwesome-Swift.h"
+    requires objc
+}

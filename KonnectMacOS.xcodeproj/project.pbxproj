@@ -35,7 +35,69 @@
 		AAB92E2124D6090A008E04D1 /* OutlineViewCustomDisclosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92E2024D6090A008E04D1 /* OutlineViewCustomDisclosure.swift */; };
 		AAC2626C24D9A08200D14352 /* NSTableView+Clickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2626B24D9A08200D14352 /* NSTableView+Clickable.swift */; };
 		AAC2626F24DA106A00D14352 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2626E24DA106A00D14352 /* FontAwesome.swift */; };
+		AAC2627224DA17F600D14352 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC2627124DA17F600D14352 /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AAC2627324DA17F600D14352 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAC2627124DA17F600D14352 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAC2627724DA186600D14352 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAC2627624DA186600D14352 /* Alamofire.framework.dSYM */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AAC71FD124DAFCE2001BD321 /* CocoaFontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC71FD024DAFCE2001BD321 /* CocoaFontAwesome.framework */; };
+		AAC71FD224DAFCE2001BD321 /* CocoaFontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAC71FD024DAFCE2001BD321 /* CocoaFontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAC71FD724DAFD56001BD321 /* CocoaFontAwesome.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAC71FD624DAFD55001BD321 /* CocoaFontAwesome.framework.dSYM */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		AAC71FD324DAFCFD001BD321 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		AAC71FD424DAFD20001BD321 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAC2627424DA17F700D14352 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AAC2627324DA17F600D14352 /* Alamofire.framework in Embed Frameworks */,
+				AAC71FD224DAFCE2001BD321 /* CocoaFontAwesome.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAC2627524DA182400D14352 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				AAC2627724DA186600D14352 /* Alamofire.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAC71FD524DAFD36001BD321 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				AAC71FD724DAFD56001BD321 /* CocoaFontAwesome.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		14800F63874F8EA55E9D3FB4 /* Pods-KonnectMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonnectMacOS.release.xcconfig"; path = "Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +132,10 @@
 		AAC2626B24D9A08200D14352 /* NSTableView+Clickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Clickable.swift"; sourceTree = "<group>"; };
 		AAC2626E24DA106A00D14352 /* FontAwesome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		AAC2627024DA109400D14352 /* CocoaFontAwesome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaFontAwesome.h; sourceTree = "<group>"; };
+		AAC2627124DA17F600D14352 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
+		AAC2627624DA186600D14352 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		AAC71FD024DAFCE2001BD321 /* CocoaFontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaFontAwesome.framework; path = Carthage/Build/Mac/CocoaFontAwesome.framework; sourceTree = "<group>"; };
+		AAC71FD624DAFD55001BD321 /* CocoaFontAwesome.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CocoaFontAwesome.framework.dSYM; path = Carthage/Build/Mac/CocoaFontAwesome.framework.dSYM; sourceTree = "<group>"; };
 		BDEFCC45D1C305DF894886F9 /* Pods-KonnectMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonnectMacOS.debug.xcconfig"; path = "Target Support Files/Pods-KonnectMacOS/Pods-KonnectMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		F703710B38C7EC0294CB962C /* Pods_KonnectMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KonnectMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7481F2F6EDA2A6FED871F659 /* Pods_KonnectMacOS.framework in Frameworks */,
+				AAC2627224DA17F600D14352 /* Alamofire.framework in Frameworks */,
+				AAC71FD124DAFCE2001BD321 /* CocoaFontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +166,10 @@
 		AA17304524CF91CA004454AB = {
 			isa = PBXGroup;
 			children = (
+				AAC71FD624DAFD55001BD321 /* CocoaFontAwesome.framework.dSYM */,
+				AAC71FD024DAFCE2001BD321 /* CocoaFontAwesome.framework */,
+				AAC2627624DA186600D14352 /* Alamofire.framework.dSYM */,
+				AAC2627124DA17F600D14352 /* Alamofire.framework */,
 				AAC2626D24DA104B00D14352 /* CocoaFontAwesome */,
 				AAC2626A24D9A06C00D14352 /* Extension */,
 				AA8FF9AD24D847EB00956E19 /* Classes */,
@@ -210,8 +282,13 @@
 				AA17304B24CF91CA004454AB /* Frameworks */,
 				AA17304C24CF91CA004454AB /* Resources */,
 				FA2022AAB762549B3399B299 /* [CP] Embed Pods Frameworks */,
+				AAC2627424DA17F700D14352 /* Embed Frameworks */,
+				AAC2627524DA182400D14352 /* CopyFiles */,
+				AAC71FD524DAFD36001BD321 /* CopyFiles */,
 			);
 			buildRules = (
+				AAC71FD424DAFD20001BD321 /* PBXBuildRule */,
+				AAC71FD324DAFCFD001BD321 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -483,6 +560,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AA7972LFAF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = KonnectMacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,6 +584,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AA7972LFAF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = KonnectMacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,0 +1,4 @@
+#github "Alamofire/Alamofire" ~> 4.7.2
+github "qvacua/CocoaFontAwesome" "master"
+#git "https://github.com/qvacua/CocoaFontAwesome"
+
